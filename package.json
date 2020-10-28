@@ -9,6 +9,8 @@
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.9",
     "mongose": "0.0.2-security",
+    "noble": "^1.9.1",
+    "node-beacon-scanner": "^0.2.2",
     "nodemon": "^2.0.5",
     "ws": "^7.3.1"
   },
