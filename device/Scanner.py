@@ -6,7 +6,7 @@ from beacontools import BeaconScanner, EddystoneTLMFrame, EddystoneFilter
 def scan(scanTime):
     scanArray = []
     def callback(bt_addr, rssi, packet, additional_info):
-        if(additional_info and additional_info["uuid"] == "11111111-1111-1111-1111-111111111111"):
+        if(True or additional_info and additional_info["uuid"] == "11111111-1111-1111-1111-111111111111"):
             added = False
             for scan in scanArray:
                 if(scan["addr"] == bt_addr):
