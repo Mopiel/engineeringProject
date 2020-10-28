@@ -27,6 +27,7 @@ def scan(scanTime):
 
 
 for x in range(20):
+    print("Number 1")
     for n in scan(1):
         print(n)
         print(10**((-69-n["rssi"])/(10**2)))
