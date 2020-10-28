@@ -1,12 +1,13 @@
 
 import time
-
 from beacontools import BeaconScanner, EddystoneTLMFrame, EddystoneFilter
+
 
 def scan(scanTime):
     scanArray = []
+
     def callback(bt_addr, rssi, packet, additional_info):
-        if(True or additional_info and additional_info["uuid"] == "11111111-1111-1111-1111-111111111111"):
+        if(additional_info and additional_info["uuid"] == "11111111-1111-1111-1111-111111111111"):
             added = False
             for scan in scanArray:
                 if(scan["addr"] == bt_addr):
@@ -14,15 +15,18 @@ def scan(scanTime):
                     added = True
                     break
             if(added == False):
-                scanArray.append({"addr":bt_addr, "rssi":[rssi], "uuid":additional_info["uuid"],"major":additional_info["major"]})
+                scanArray.append({"addr": bt_addr, "rssi": [
+                                 rssi], "uuid": additional_info["uuid"], "major": additional_info["major"]})
 
     scanner = BeaconScanner(callback)
     scanner.start()
     time.sleep(scanTime)
     scanner.stop()
     newArray = []
+    print(scan)
     for scan in scanArray:
-        newArray.append({"addr":scan["addr"], "rssi":sum(scan["rssi"])/len(scan["rssi"]), "uuid":scan["uuid"],"major":scan["major"]})
+        newArray.append({"addr": scan["addr"], "rssi": sum(
+            scan["rssi"])/len(scan["rssi"]), "uuid": scan["uuid"], "major": scan["major"]})
     return newArray
 
 
