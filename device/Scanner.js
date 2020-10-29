@@ -20,10 +20,6 @@ scanner
     console.error(error);
   });
 
-const noble = require("noble");
-
-noble.startScanning();
-
 // noble.on("discover", function (peripheral) {
 //   var macAddress = peripheral.uuid;
 //   var rss = peripheral.rssi;
