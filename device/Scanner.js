@@ -6,7 +6,7 @@ var scanner = new BeaconScanner();
 scanner.onadvertisement = (advertisement) => {
   if (
     advertisement &&
-    advertisement.iBeacone.uuid === "11111111-1111-1111-1111-111111111111"
+    advertisement.iBeacone["uuid"] === "11111111-1111-1111-1111-111111111111"
   )
     console.log(advertisement);
 };
