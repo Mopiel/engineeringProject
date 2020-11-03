@@ -4,7 +4,7 @@ const BeaconScanner = require("node-beacon-scanner");
 var scanner = new BeaconScanner();
 
 scanner.onadvertisement = (advertisement) => {
-  console.log(advertisement["iBeacone"]);
+  console.log(advertisement);
   if (
     advertisement &&
     advertisement["iBeacone"] &&
