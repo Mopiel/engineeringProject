@@ -1,3 +1,1 @@
-import sendData from "./Scanner";
-
-sendData("!2", "124", 21, 1);
+Math.sum([1,2,3])
