@@ -47,13 +47,14 @@ const sendData = (name, device, rssi, txpower) => {
 };
 
 setInterval(() => {
-  array.map((a) =>
+  array.map((a) => {
+    console.log(a);
     sendData(
       a.id,
       a.device,
       Math.floor(a.rssi.reduce((a, b) => a + b, 0) / a.rssi.length),
       a.txPower
-    )
-  );
+    );
+  });
   array = [];
 }, 4 * 1000);
