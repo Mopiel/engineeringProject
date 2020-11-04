@@ -4,9 +4,9 @@ const BeaconScanner = require("node-beacon-scanner");
 var scanner = new BeaconScanner();
 
 scanner.onadvertisement = (advertisement) => {
-  console.log(advertisement.iBeacon);
-  if (advertisement.iBeacon.uuid === "11111111-1111-1111-1111-111111111111")
-    console.log(advertisement);
+  if (advertisement.iBeacon.uuid !== "11111111-1111-1111-1111-111111111111")
+    return;
+  console.log(advertisement);
 };
 
 scanner
