@@ -20,7 +20,12 @@ scanner.onadvertisement = (advertisement) => {
   const index = array.findIndex((a) => a.id === major);
   if (index < 0) array.push({ id: major, device, rssi: [rssi], txPower });
   else
-    array[index] = { id, device, rssi: [...array[index].rssi, rssi], txPower };
+    array[index] = {
+      id: major,
+      device,
+      rssi: [...array[index].rssi, rssi],
+      txPower,
+    };
 };
 
 scanner
@@ -48,7 +53,7 @@ const sendData = (name, device, rssi, txpower) => {
 
 setInterval(() => {
   array.map((a) => {
-    console.log(a);
+    console.log(a.id);
     sendData(
       a.id,
       a.device,
