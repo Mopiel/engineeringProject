@@ -12,14 +12,13 @@ export const resolvers = {
       return Beacon.find();
     },
 
-    updateBeacon: async (_, { name, device, rssi }) => {
+    updateBeacon: async (_, { name, device, rssi,txpower }) => {
       const oldBeacon = await Beacon.findOne({ name });
-      // console.log(parseInt(oldBeacon.positions[0].date))
-      const date = Date.now().toString()
+      const date = Date.now().toString();
       if (!oldBeacon) {
         const newBeacon = new Beacon({
           name,
-          positions: [{ device, rssi, date }],
+          positions: [{ device, rssi, date,txpower }],
         });
         await newBeacon.save();
         return newBeacon;
@@ -34,6 +33,7 @@ export const resolvers = {
             $set: {
               "positions.$.rssi": rssi,
               "positions.$.date": date,
+              "positions.$.txpower": txpower,
             },
           },
           (err, result) => {
@@ -46,7 +46,7 @@ export const resolvers = {
           { name },
           {
             $addToSet: {
-              positions: [{ device, rssi, date }],
+              positions: [{ device, rssi, date,txpower }],
             },
           },
           { upsert: true, new: true },

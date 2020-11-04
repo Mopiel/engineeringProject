@@ -4,8 +4,11 @@
   "description": "",
   "main": "clientMongoDB.js",
   "dependencies": {
+    "address": "^1.1.2",
     "apollo-server-express": "^2.18.2",
     "express": "^4.17.1",
+    "getmac": "^5.17.0",
+    "macaddress": "^0.5.1",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.9",
     "mongose": "0.0.2-security",

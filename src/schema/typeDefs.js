@@ -17,10 +17,16 @@ export const typeDefs = gql`
     device: String!
     rssi: Int!
     date: String!
+    txpower: Int!
   }
 
   type Mutation {
     deleteBeacons: [Beacon]!
-    updateBeacon(name: String!, device: String!, rssi: Int!): Beacon
+    updateBeacon(
+      name: String!
+      device: String!
+      rssi: Int!
+      txpower: Int!
+    ): Beacon
   }
 `;
