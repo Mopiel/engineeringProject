@@ -11,7 +11,7 @@ const array = [];
 
 scanner.onadvertisement = (advertisement) => {
   if (
-    advertisement.iBeacon &&
+    !advertisement.iBeacon &&
     advertisement.iBeacon.uuid !== "11111111-1111-1111-1111-111111111111"
   )
     return;
