@@ -10,7 +10,10 @@ var scanner = new BeaconScanner();
 const array = [];
 
 scanner.onadvertisement = (advertisement) => {
-  if (advertisement.iBeacon.uuid !== "11111111-1111-1111-1111-111111111111")
+  if (
+    advertisement.iBeacon &&
+    advertisement.iBeacon.uuid !== "11111111-1111-1111-1111-111111111111"
+  )
     return;
   const { id, rssi, iBeacon } = advertisement;
   const { txPower } = iBeacon;
