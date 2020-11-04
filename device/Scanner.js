@@ -15,10 +15,10 @@ scanner.onadvertisement = (advertisement) => {
     advertisement.iBeacon.uuid !== "11111111-1111-1111-1111-111111111111"
   )
     return;
-  const { id, rssi, iBeacon } = advertisement;
-  const { txPower } = iBeacon;
-  const index = array.findIndex((a) => a.id);
-  if (index < 0) array.push({ id, device, rssi: [rssi], txPower });
+  const { id, address, rssi, iBeacon } = advertisement;
+  const { txPower, major } = iBeacon;
+  const index = array.findIndex((a) => a.id === major);
+  if (index < 0) array.push({ id: major, device, rssi: [rssi], txPower });
   else
     array[index] = { id, device, rssi: [...array[index].rssi, rssi], txPower };
 };
