@@ -14,7 +14,6 @@ scanner.onadvertisement = (advertisement) => {
     return;
   const { id, rssi, iBeacon } = advertisement;
   const { txPower } = iBeacon;
-  sendData(id, device, rssi, txPower);
   const index = array.findIndex((a) => a.id);
   if (index < 0) array.push({ id, device, rssi: [rssi], txPower });
   else
@@ -49,7 +48,7 @@ setInterval(() => {
     sendData(
       a.id,
       a.device,
-      a.rssi.reduce((a, b) => a + b, 0) / a.rssi.length,
+      Math.floor(a.rssi.reduce((a, b) => a + b, 0) / a.rssi.length),
       a.txPower
     )
   );
