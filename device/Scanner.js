@@ -48,12 +48,11 @@ const sendData = (name, device, rssi, txpower) => {
     body: JSON.stringify({ query }),
   })
     .then((r) => r.json())
-    .then((data) => console.log("data returned:", data));
+    .then((data) => data);
 };
 
 setInterval(() => {
   array.map((a) => {
-    console.log(a.id);
     sendData(
       a.id,
       a.device,
