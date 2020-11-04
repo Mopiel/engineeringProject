@@ -7,7 +7,7 @@ const device = address.ip();
 url = "http://192.168.1.14:4000/graphql";
 
 var scanner = new BeaconScanner();
-const array = [];
+let array = [];
 
 scanner.onadvertisement = (advertisement) => {
   if (
