@@ -47,6 +47,7 @@ const sendData = (name, device, rssi, txpower) => {
 };
 
 setInterval(() => {
+  console.log(array);
   array.map((a) =>
     sendData(
       a.id,
