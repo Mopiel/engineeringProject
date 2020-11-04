@@ -5,6 +5,7 @@
   "main": "clientMongoDB.js",
   "dependencies": {
     "address": "^1.1.2",
+    "apollo-server": "^2.19.0",
     "apollo-server-express": "^2.18.2",
     "express": "^4.17.1",
     "getmac": "^5.17.0",
