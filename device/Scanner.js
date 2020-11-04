@@ -47,7 +47,6 @@ const sendData = (name, device, rssi, txpower) => {
 };
 
 setInterval(() => {
-  console.log(array);
   array.map((a) =>
     sendData(
       a.id,
@@ -56,4 +55,5 @@ setInterval(() => {
       a.txPower
     )
   );
+  array = [];
 }, 4 * 1000);
