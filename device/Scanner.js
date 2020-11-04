@@ -2,7 +2,7 @@ const Noble = require("noble");
 const BeaconScanner = require("node-beacon-scanner");
 const fetch = require("node-fetch");
 const address = require('address');
-console.log(address.ipv6())
+console.log(address.ip())
 
 url = "http://192.168.1.14:4000/graphql";
 
