@@ -55,7 +55,7 @@ setInterval(() => {
     console.log(a.rssi);
     const avarange = a.rssi.reduce((a, b) => a + b, 0) / a.rssi.length;
     const newRssiArray = a.rssi.filter(
-      (a) => avarange + 4 > rssi && avarange - 4 < rssi
+      (a) => avarange + 4 > a && avarange - 4 < a
     );
     const newAvarange = Math.floor(
       newRssiArray.length
