@@ -18,6 +18,7 @@ export const typeDefs = gql`
     rssi: Int!
     date: String!
     txpower: Int!
+    alarmcode: Int
   }
 
   type Mutation {
@@ -27,6 +28,7 @@ export const typeDefs = gql`
       device: String!
       rssi: Int!
       txpower: Int!
+      alarmcode: Int
     ): Beacon
   }
 `;

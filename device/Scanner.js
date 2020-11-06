@@ -38,7 +38,6 @@ scanner
   });
 
 const sendData = (name, device, rssi, txpower) => {
-  query = `mutation { updateBeacon( name: "${name}", device: "${device}", rssi: ${rssi},txpower: ${txpower}) { id } }`;
   return fetch(url, {
     method: "POST",
     headers: {
@@ -54,12 +53,17 @@ const sendData = (name, device, rssi, txpower) => {
 setInterval(() => {
   array.map((a) => {
     console.log(a.rssi);
-    sendData(
-      a.id,
-      a.device,
-      Math.floor(a.rssi.reduce((a, b) => a + b, 0) / a.rssi.length),
-      a.txPower
+    const avarange = a.rssi.reduce((a, b) => a + b, 0) / a.rssi.length;
+    const newRssiArray = a.rssi.filter(
+      (a) => avarange + 4 > rssi && avarange - 4 < rssi
     );
+    const newAvarange = Math.floor(
+      newRssiArray.length
+        ? newRssiArray.reduce((a, b) => a + b, 0) / a.rssi.length
+        : avarange
+    );
+    console.log(avarange, newAvarange);
+    sendData(a.id, a.device, newAvarange, a.txPower);
   });
   array = [];
 }, 4 * 1000);
