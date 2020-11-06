@@ -53,18 +53,10 @@ const sendData = (name, device, rssi, txpower) => {
 
 setInterval(() => {
   array.map((a) => {
-    console.log(a.rssi.sort((a, b) => (a > b ? 1 : -1)));
-    const avarange = a.rssi.reduce((a, b) => a + b, 0) / a.rssi.length;
-    const newRssiArray = a.rssi.filter(
-      (a) => avarange + 4 > a && avarange - 4 < a
-    );
-    const newAvarange = Math.floor(
-      newRssiArray.length
-        ? newRssiArray.reduce((a, b) => a + b, 0) / newRssiArray.length
-        : avarange
-    );
-    console.log(avarange, newAvarange);
-    sendData(a.id, a.device, newAvarange, a.txPower);
+    const avarange =
+      Math.floor((100 * a.rssi.reduce((a, b) => a + b, 0)) / a.rssi.length) /
+      100;
+    sendData(a.id, a.device, avarange, a.txPower);
   });
   array = [];
 }, 4 * 1000);

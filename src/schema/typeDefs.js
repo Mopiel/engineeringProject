@@ -15,7 +15,7 @@ export const typeDefs = gql`
   type Positions {
     id: ID!
     device: String!
-    rssi: Int!
+    rssi: Float!
     date: String!
     txpower: Int!
     alarmcode: Int
@@ -26,7 +26,7 @@ export const typeDefs = gql`
     updateBeacon(
       name: String!
       device: String!
-      rssi: Int!
+      rssi: Float!
       txpower: Int!
       alarmcode: Int
     ): Beacon
