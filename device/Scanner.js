@@ -53,7 +53,7 @@ const sendData = (name, device, rssi, txpower) => {
 
 setInterval(() => {
   array.map((a) => {
-    console.log(a.rssi);
+    console.log(a.rssi.sort((a, b) => (a > b ? 1 : -1)));
     const avarange = a.rssi.reduce((a, b) => a + b, 0) / a.rssi.length;
     const newRssiArray = a.rssi.filter(
       (a) => avarange + 4 > a && avarange - 4 < a
