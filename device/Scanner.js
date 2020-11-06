@@ -38,6 +38,7 @@ scanner
   });
 
 const sendData = (name, device, rssi, txpower) => {
+  query = `mutation { updateBeacon( name: "${name}", device: "${device}", rssi: ${rssi},txpower: ${txpower}) { id } }`;
   return fetch(url, {
     method: "POST",
     headers: {
