@@ -60,7 +60,7 @@ setInterval(() => {
     );
     const newAvarange = Math.floor(
       newRssiArray.length
-        ? newRssiArray.reduce((a, b) => a + b, 0) / a.rssi.length
+        ? newRssiArray.reduce((a, b) => a + b, 0) / newRssiArray.length
         : avarange
     );
     console.log(avarange, newAvarange);
