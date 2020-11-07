@@ -2,7 +2,7 @@ const BeaconScanner = require("node-beacon-scanner");
 const fetch = require("node-fetch");
 const address = require("address");
 
-const device = address.ip();
+async const device = await address.ip();
 
 url = "http://192.168.1.14:4000/graphql";
 
@@ -16,9 +16,9 @@ scanner.onadvertisement = (advertisement) => {
   )
     return;
   const { id, address, rssi, iBeacon } = advertisement;
-  const { txPower, major } = iBeacon;
+  const { txPower, major, minor} = iBeacon;
   const index = array.findIndex((a) => a.id === major);
-  if (index < 0) array.push({ id: major, device, rssi: [rssi], txPower });
+  if (index < 0) array.push({ id: major, device, rssi: [rssi], txPower, minor });
   else
     array[index] = {
       id: major,
@@ -37,8 +37,8 @@ scanner
     console.error(error);
   });
 
-const sendData = (name, device, rssi, txpower) => {
-  query = `mutation { updateBeacon( name: "${name}", device: "${device}", rssi: ${rssi},txpower: ${txpower}) { id } }`;
+const sendData = (name, device, rssi, txpower,alarmcode) => {
+  query = `mutation { updateBeacon( name: "${name}", device: "${device}", rssi: ${rssi},txpower: ${txpower}, ,alarmcode: ${alarmcode}) { id } }`;
   return fetch(url, {
     method: "POST",
     headers: {
