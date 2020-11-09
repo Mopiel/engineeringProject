@@ -20,13 +20,14 @@ scanner.onadvertisement = (advertisement) => {
   const { txPower, major, minor } = iBeacon;
   const index = array.findIndex((a) => a.id === major);
   if (index < 0)
-    array.push({ id: major, device, rssi: [rssi], txPower, minor });
+    array.push({ id: major, device, rssi: [rssi], txPower, alarmcode: minor });
   else
     array[index] = {
       id: major,
       device,
       rssi: [...array[index].rssi, rssi],
       txPower,
+      alarmcode: minor,
     };
 };
 
@@ -59,7 +60,7 @@ setInterval(() => {
     const avarange =
       Math.floor((100 * a.rssi.reduce((a, b) => a + b, 0)) / a.rssi.length) /
       100;
-    sendData(a.id, a.device, avarange, a.txPower);
+    sendData(a.id, a.device, avarange, a.txPower, a.alarmcode);
   });
   array = [];
 }, 4 * 1000);
