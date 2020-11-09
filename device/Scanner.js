@@ -1,7 +1,6 @@
 const BeaconScanner = require("node-beacon-scanner");
 const fetch = require("node-fetch");
 const address = require("address");
-const { query } = require("express");
 
 const device = address.ip();
 
