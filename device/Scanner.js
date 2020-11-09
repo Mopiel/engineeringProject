@@ -18,7 +18,6 @@ scanner.onadvertisement = (advertisement) => {
     return;
   const { id, address, rssi, iBeacon } = advertisement;
   const { txPower, major, minor } = iBeacon;
-  console.log(iBeacon);
   const index = array.findIndex((a) => a.id === major);
   if (index < 0)
     array.push({ id: major, device, rssi: [rssi], txPower, alarmcode: minor });
@@ -57,6 +56,7 @@ const sendData = (name, device, rssi, txpower, alarmcode) => {
 };
 
 setInterval(() => {
+  console.log(array);
   array.map((a) => {
     const avarange =
       Math.floor((100 * a.rssi.reduce((a, b) => a + b, 0)) / a.rssi.length) /
