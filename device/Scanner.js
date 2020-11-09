@@ -18,6 +18,7 @@ scanner.onadvertisement = (advertisement) => {
     return;
   const { id, address, rssi, iBeacon } = advertisement;
   const { txPower, major, minor } = iBeacon;
+  console.log(iBeacon);
   const index = array.findIndex((a) => a.id === major);
   if (index < 0)
     array.push({ id: major, device, rssi: [rssi], txPower, alarmcode: minor });
