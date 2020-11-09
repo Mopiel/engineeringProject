@@ -49,7 +49,7 @@ const sendData = (name, device, rssi, txpower, alarmcode) => {
     body: JSON.stringify({ query }),
   })
     .then((r) => r.json())
-    .then((data) => data);
+    .then((data) => console.log("data", data));
 };
 
 setInterval(() => {
