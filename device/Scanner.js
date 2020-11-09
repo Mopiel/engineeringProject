@@ -58,7 +58,7 @@ setInterval(() => {
       Math.floor((100 * a.rssi.reduce((a, b) => a + b, 0)) / a.rssi.length) /
       100;
     console.log(avarange, a.rssi);
-    console.log(Math.pow(10,(-63 - a.txPower)/ (-10 * 2)))
+    console.log(Math.pow(10, (a.txPower - a.rssi) / (-10 * 2)));
     sendData(a.id, a.device, avarange, a.txPower);
   });
   array = [];
