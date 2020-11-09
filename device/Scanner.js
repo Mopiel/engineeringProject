@@ -41,7 +41,6 @@ scanner
 
 const sendData = (name, device, rssi, txpower, alarmcode) => {
   query = `mutation { updateBeacon( name: "${name}", device: "${device}", rssi: ${rssi},txpower: ${txpower}, ,alarmcode: ${alarmcode}) { id } }`;
-  console.log(query);
   return fetch(url, {
     method: "POST",
     headers: {
@@ -55,7 +54,6 @@ const sendData = (name, device, rssi, txpower, alarmcode) => {
 };
 
 setInterval(() => {
-  console.log(array);
   array.map((a) => {
     const avarange =
       Math.floor((100 * a.rssi.reduce((a, b) => a + b, 0)) / a.rssi.length) /
