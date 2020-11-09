@@ -1,6 +1,7 @@
 const BeaconScanner = require("node-beacon-scanner");
 const fetch = require("node-fetch");
 const address = require("address");
+const { query } = require("express");
 
 const device = address.ip();
 
@@ -40,6 +41,7 @@ scanner
 
 const sendData = (name, device, rssi, txpower, alarmcode) => {
   query = `mutation { updateBeacon( name: "${name}", device: "${device}", rssi: ${rssi},txpower: ${txpower}, ,alarmcode: ${alarmcode}) { id } }`;
+  console.log(query);
   return fetch(url, {
     method: "POST",
     headers: {
@@ -49,7 +51,7 @@ const sendData = (name, device, rssi, txpower, alarmcode) => {
     body: JSON.stringify({ query }),
   })
     .then((r) => r.json())
-    .then((data) => console.log("data", data));
+    .then((data) => data);
 };
 
 setInterval(() => {
@@ -57,8 +59,6 @@ setInterval(() => {
     const avarange =
       Math.floor((100 * a.rssi.reduce((a, b) => a + b, 0)) / a.rssi.length) /
       100;
-    console.log(avarange, a.rssi);
-    console.log(Math.pow(10, (avarange - a.txPower) / (-10 * 2)));
     sendData(a.id, a.device, avarange, a.txPower);
   });
   array = [];
