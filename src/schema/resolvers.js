@@ -104,7 +104,7 @@ export const resolvers = {
               "positions.$.rssi": [
                 ...oldBeacon.positions[position].rssi,
                 rssi,
-              ].slice(-10),
+              ].slice(-30),
               "positions.$.date": date,
               "positions.$.txpower": txpower,
               "positions.$.alarmcode": alarmcode,
@@ -137,5 +137,3 @@ export const resolvers = {
     },
   },
 };
-
-
