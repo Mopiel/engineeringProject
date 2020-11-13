@@ -61,4 +61,4 @@ setInterval(() => {
     sendData(a.id, a.device, avarange, a.txPower, a.alarmcode);
   });
   array = [];
-}, 4 * 1000);
+}, 2 * 1000);
