@@ -5,9 +5,9 @@ Back end part of Beacon localization system.
 
 In case to install use 
 
-*** npm install ***
+#npm install
 
 Then
 
-*** npm start ***
+#npm start
 to start backend server
